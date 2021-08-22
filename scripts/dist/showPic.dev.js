@@ -6,5 +6,5 @@ function showPic(whichpic) {
 
   var placeholder = document.getElementById("placeholder"); // 刷新img标签中src属性的值
 
-  placeholder.setAttribute("src", source); // 测试
+  placeholder.setAttribute("src", source); // 测试2
 }
