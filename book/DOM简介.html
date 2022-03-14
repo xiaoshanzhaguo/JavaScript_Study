@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Shopping list</title>
+    <style>
+        body {
+            color:white;
+            background-color: black;
+        }
+        p {
+            color: yellow;
+            font-family: "arial", sans-serif;
+            font-size: 1.2em;
+        }
+        #purchases {
+            border: 1px solid white;
+            background-color: #333;
+            color: #ccc;
+            padding: 1em;
+        }
+        #purchases li{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>What to buy</h1>
+    <p title="a gentle reminder">Don't forget to buy this stuff.</p>
+    <p>This is just a test</p>
+    <ul id="purchases">
+        <li>A tin of beans</li>
+        <li class="sale">Cheese</li>
+        <li class="sale important">Milk</li>
+    </ul>
+    <script>
+        // 1. 获取元素
+        // alert(typeof document.getElementById("purchases"));
+        // alert(document.getElementsByTagName("li").length);
+        // for(var i = 0; i < document.getElementsByTagName("li").length; i++) {
+        //     alert(typeof document.getElementsByTagName("li")[i]);
+        // }
+        // 输出每个返回的类型
+        var items = document.getElementsByTagName("li");
+        for (var i = 0; i < items.length; i++) {
+            alert(typeof items[i]);
+        }
+        // 查看文档里总共有多少个元素节点
+        alert(document.getElementsByTagName("*").length)
+
+        // 想知道id属性是purchase的元素，包含着多少个列表项，必须通过一个更具体的对象去调用这个方法。
+        var shopping = document.getElementById("purchases");
+        var items2 = shopping.getElementsByTagName("*");
+        alert(items2.length)
+
+        // 证明items数组里面的每个值确实是一个对象
+        for (var i = 0; i < items2.length; i++) {
+            alert(typeof items2[i]);
+        }
+
+        // 查找带有多个类名的元素
+        alert(document.getElementsByClassName("important sale").length);
+
+        // 如果你想知道在id为"purchases"的元素中有多少类名包含"sale"列表项，可以先找到那个特定的对象，然后再调用getElementsByClassName:
+        var shopping2 = document.getElementById("purchases");
+        var sales = shopping2.getElementsByClassName("sale");
+        alert(sales.length);
+
+        // getElementByClassName 函数接受两个参数
+        function getElementsByClassName(node,  classname) {
+            if (node.getElementsByClassName) {
+                // 使用现有方法
+                return node,getElementsByClassName(classname);
+            } else {
+                var results = new Array();
+                var elems = node.getElementsByTagName("*");
+                for (var i = 0; i < elems.length; i++) {
+                    if (elems[i].className.indexOf(classname) != -1) {
+                        results[results.length] = elems[i];
+                    }
+                }
+                return results;
+            }
+        }
+
+        var shopping3 = document.getElementById("purchases");
+        var sales3 = getElementsByClassName(shopping, "sale");
+
+        // 2.获取和设置属性
+        // 2.1 getAttribute
+        var paras = document.getElementsByTagName("p");
+        for (var i = 0; i < paras.length; i++) {
+            alert(paras[i].getAttribute("title"));
+        }
+
+        // 修改脚本，让它只在title属性有值时才弹出消息
+        var paras1 = document.getElementsByTagName("p");
+        for (var i = 0; i < paras1.length; i++) {
+            var title_text = paras1[i].getAttribute("title");
+            if (title_text != null) {
+                alert(title_text);
+            }
+        }
+        // 简洁版
+        var paras2 = document.getElementsByTagName("p");
+        for (var i = 0; i < paras2.length; i++) {
+            var title_text1 = paras2[i].getAttribute("title");
+            if (title_text1) alert(title_text1);
+        }
+
+        // 2.2 getAttribute
+        var shopping4 = document.getElementById("purchases");
+        alert(shopping4.getAttribute("title"));
+        shopping4.setAttribute("title","a list of goods");
+        alert(shopping4.getAttribute("title"));
+        // 用setAttribute来改变已经存在的值
+        var paras3 = document.getElementsByTagName("p");
+        for (var i = 0; i < paras3.length; i++) {
+            var title_text2 = paras3[i].getAttribute("title");
+            if (title_text2) {
+                paras3[i].setAttribute("title","brand new title text");
+                alert(paras3[i].getAttribute("title"));
+            }
+        }
+    </script>
+</body>
+</html>
