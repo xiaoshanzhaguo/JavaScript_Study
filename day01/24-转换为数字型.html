@@ -19,6 +19,16 @@
         console.log(parseFloat('3.14'));  // 3.14
         console.log(parseFloat('120px'));  // 120 会去掉这个px单位
         console.log(parseFloat('rem120px'));  // NaN
+
+        // 3.利用 Number(变量)
+        var str = '123';
+        console.log(Number(str));
+        console.log(Number('12'));
+
+        // 4. 利用了算数运算 - * / 隐式转换
+        console.log('12' - 0);  // 12 (在减的时候，先把'12'转换成数字型的12，然后再进行减操作)
+        console.log('123' - '120');  // 3
+        console.log('123' * 1);  // 123
     </script>
 </head>
 
