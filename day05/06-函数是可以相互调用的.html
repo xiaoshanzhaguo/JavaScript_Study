@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 函数是可以相互调用的
+        function fn1() {
+            console.log(11);
+            fn2();  // 在 fn1 函数里面调用了 fn2 函数
+            // 先打印11，再去跳到fn2函数，去执行这个函数，里面打印了22
+        }
+        fn1();
+        function fn2() {
+            console.log(22);
+        }
+
+        // 代码执行到这里，不会调用fn3，再后面fn3()函数调用时才会调用fn3函数。
+        function fn3() {
+            console.log(333);
+            fn4();
+            console.log('fn3');
+        }
+        function fn4() {
+            console.log(444);
+            console.log('fn4');
+        }
+        fn3();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
