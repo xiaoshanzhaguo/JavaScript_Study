@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 用户输入年份，输出当前年份2月份的天数
+        function backDay() {
+            var year = prompt('请您输入年份：');
+            // var year = parseInt(message);
+            // var day = 28;
+            // if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            //     day = 29;
+            // }
+            // return day;
+
+            // 老师判断闰年的方法是调用其他的函数
+            if (isRunYear(year)) {  // 调用函数需要加小括号 year在函数里进行了隐式转换(因为比较或者减乘除取余数的时候，默认转换成数字型了)
+                alert('当前年份是闰年，2月份有29天');
+            } else {
+                alert('当前年份是平年，2月份有28天');
+            }
+
+        }
+        backDay();
+
+        // 判断是否为闰年的函数
+        function isRunYear(year) {  // ！！！参数year写在这里
+            // (改用老师的方法)如果是闰年 我们返回 true  否则 返回 false
+            var flag = false;
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                flag = true;
+            }
+            return flag;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
