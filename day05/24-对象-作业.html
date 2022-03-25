@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 创建一个电脑对象，该对象要有颜色、重量、品牌、型号，可以看电影、听音乐、打游戏和敲代码。
+        // 这里使用对象字面量创建对象
+        var computer = {
+            color: '银色',
+            weight: '2kg',
+            brand: '惠普',
+            type: '战66',
+            seeMovies: function () {
+                console.log('看电影');
+            },
+            listenMusics: function () {
+                console.log('听音乐');
+            },
+            playGames: function () {
+                console.log('打游戏');
+            },
+            makecodes: function () {
+                console.log('敲代码');
+            }
+        }
+        for (var k in computer) {
+            console.log(computer[k]);
+        }
+
+        // 创建一个按钮对象，该对象中需要包含宽，高，背景颜色和点击行为。
+        // 这里使用new Object创建对象
+        var button = new Object();  // ！！！这里要写Object，而不是Button
+        button.weight = '40px';
+        button.height = '20px';
+        button.click = function () {
+            console.log('按钮的点击事件');
+        }
+        console.log(button.weight);
+        console.log(button['height']);
+        button.click();
+
+        // 创建一个车的对象，该对象要有重量、颜色、牌子，可以载人、拉货和耕田。
+        // 这里使用构造函数创建对象
+        function Car(weight, color, brand) {
+            this.weight = weight;
+            this.color = color;
+            this.brand = brand;
+            this.takePeople = function () {
+                console.log('车可以载人');
+            },
+            this.takeGoods = function () {
+                console.log('车可以拉货');
+            },
+            this.plow = function () {
+                console.log('车可以耕田');
+            }
+        }
+        var car = new Car('5t', '紫色', 'mini');
+        console.log(car.color);
+        console.log(car['brand']);
+        car.plow();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
