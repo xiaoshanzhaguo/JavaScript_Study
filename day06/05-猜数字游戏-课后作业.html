@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 要求用户猜1~50之间的一个数字 但是只有 10 次猜的机会
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var random = getRandom(1, 50);
+        for (var i = 0; i < 10; i++) {
+            var guess = prompt('请输入1~50之间的数字：');
+            var flag = false;
+            if (guess > random) {
+                alert('你猜大了');
+            } else if (guess < random) {
+                alert('你猜小了');
+            } else {
+                alert('太棒了！你猜对了！');
+                flag = true;
+                break;
+            }
+            if (i == 9 && flag == false) {
+                alert('你已经猜了10次了，很遗憾，都没猜对。');
+                break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
