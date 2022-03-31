@@ -12,12 +12,14 @@
             this.name = name;
         }
 
-        function f1(x) {  // x = p
+        function f1(x) {  // x = p 先开辟一个x的变量，在栈里面也开辟一个空间，里面存放的是地址，p里面的地址复制给了x，x再指向这个地址，与p同样的地址，指向同一个对象。
             console.log(x.name);  // 2. 这个输出什么？ 刘德华
-            x.name = '张学友';
+            x.name = '张学友';  // 更改堆里的name
             console.log(x.name);  // 3. 这个输出什么？ 张学友
         }
-        var p = new Person('刘德华');
+        var p = new Person('刘德华');  
+            /* 有一个p的变量指向了复杂数据类型。复杂数据类型首先有一个变量p，它会在栈里面开辟一块空间，里面存放的是地址。
+            真正的new Person对象是存放在堆里面的。name = '刘德华' */
         console.log(p.name);  // 1. 这个输出什么？ 刘德华
         f1(p);
         console.log(p.name);  // 4. 这个输出什么？ 张学友
