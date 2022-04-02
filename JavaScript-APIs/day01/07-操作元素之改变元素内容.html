@@ -30,7 +30,7 @@
         // 2. 注册事件
         btn.onclick = function () {
             // div.innerText = '2022-4-2';
-            div.innerText = getDate();
+            div.innerHTML = getDate();
         }
 
         function getDate() {
@@ -44,7 +44,7 @@
         }
         // 我们元素可以不用添加事件 (而去直接操作DOM)
         var p = document.querySelector('p');
-        p.innerText = getDate();
+        p.innerHTML = getDate();
     </script>
 </body>
 
