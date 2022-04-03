@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .marriage {
+            width: 310px;
+            margin: 100px auto;
+        }
+
+        .marriage .user {
+            color: #999;
+        }
+
+        .jd {
+            position: relative;
+            width: 310px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            color: #54555b;
+            /* ！！！想让图片居中，应该在这里加text-align */
+            text-align: center;
+        }
+
+        .jd .image {
+            width: 300px;
+            height: 200px;
+            margin-top: 5px;
+        }
+
+        .jd .close-btn {
+            position: absolute;
+            left: -30px;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .xl {
+            width: 310px;
+            margin: 100px auto;
+        }
+
+        .xl ul li {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="marriage">
+        <input type="text" value="请输入用户名" class="user">
+    </div>
+
+    <div class="jd">
+        <img src="images/afternoon.jpg" alt="" class="image">
+        <i class="close-btn">x</i>
+    </div>
+
+    <div class="xl">
+        新浪 ↓
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <script>
+        // 1.世纪佳缘用户名显示隐藏内容
+        var user = document.querySelector('.user');
+        user.onfocus = function () {
+            if (this.value === '请输入用户名') {
+                this.value = '';
+            }
+            this.style.color = '#333';
+        }
+        user.onblur = function () {
+            if (this.value === '') {
+                this.value = '请输入用户名';
+            }
+            this.style.color = '#999';
+        }
+
+        // 2.京东关闭广告（直接隐藏即可)
+        var jd = document.querySelector('.jd');
+        var btn = document.querySelector('.close-btn');
+        btn.onclick = function () {
+            jd.style.display = 'none';
+        }
+
+        // 3.新浪下拉菜单（微博即可)  查找资料发现显示和隐藏option即可
+        // https://www.jb51.net/article/209344.htm
+        var xl = document.querySelector('.xl')
+        var lis = document.querySelectorAll('li');
+        xl.onmouseover = function () {
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].style.display = 'block';
+            }
+        }
+        xl.onmouseout = function () {
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].style.display = 'none';
+            }
+        }
+
+        // 4.开关灯案例(见素材)
+    </script>
+</body>
+
+</html>
