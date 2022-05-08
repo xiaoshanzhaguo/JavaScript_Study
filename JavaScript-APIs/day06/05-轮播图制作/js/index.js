@@ -69,49 +69,60 @@ window.addEventListener('load', function () {
     var num = 0;
     // circle 控制小圆圈的播放
     var circle = 0;
+    // flag 节流阀
+    var flag = true;
     arrow_r.addEventListener('click', function () {
-        // 如果走到了最后复制的一张图片，此时 我们的ul 要快速复原 left 改为0
-        if (num == ul.children.length - 1) {
-            ul.style.left = 0;
-            num = 0;
+        if (flag) {
+            flag = false; // 关闭节流阀
+            // 如果走到了最后复制的一张图片，此时 我们的ul 要快速复原 left 改为0
+            if (num == ul.children.length - 1) {
+                ul.style.left = 0;
+                num = 0;
+            }
+            num++;
+            animate(ul, -num * focusWidth, function () {
+                flag = true; // 打开节流阀
+            });
+
+            // 8. 点击右侧按钮，小圆圈跟随一起变化 可以再声明一个变量控制小圆圈的播放
+            circle++;
+            // 如果circle == 4 说明走到最后 我们克隆的这张图片了 我们就复原
+            if (circle == ol.children.length) {
+                circle = 0;
+            }
+
+            // 调用函数
+            circleChange();
         }
-        num++;
-        animate(ul, -num * focusWidth);
-
-
-        // 8. 点击右侧按钮，小圆圈跟随一起变化 可以再声明一个变量控制小圆圈的播放
-        circle++;
-        // 如果circle == 4 说明走到最后 我们克隆的这张图片了 我们就复原
-        if (circle == ol.children.length) {
-            circle = 0;
-        }
-
-        // 调用函数
-        circleChange();
     });
 
     // 9. 左侧按钮做法
     arrow_l.addEventListener('click', function () {
-        // 如果走到了最后复制的一张图片，此时 我们的ul 要快速复原 left 改为0
-        if (num == 0) {
-            num = ul.children.length - 1;
-            ul.style.left = -num * focusWidth + 'px'; // ！！！千万别忘了加px
+        if (flag) {
+            flag = false;
+            // 如果走到了最后复制的一张图片，此时 我们的ul 要快速复原 left 改为0
+            if (num == 0) {
+                num = ul.children.length - 1;
+                ul.style.left = -num * focusWidth + 'px'; // ！！！千万别忘了加px
+            }
+            num--;
+            // 我终于看懂了 为什么 点击左箭头还是负值，因为你们看left值为负数往左移动的距离。而num是减少的，所以left离0分界点会越来越近，ul整体是往右移动的，但ul位于focus还是负的left
+            animate(ul, -num * focusWidth, function () {
+                flag = true;
+            });
+
+
+            // 8. 点击右侧按钮，小圆圈跟随一起变化 可以再声明一个变量控制小圆圈的播放
+            circle--;
+            // 如果circle < 0 说明走到第一张图片，则小圆圈要改为第4个小圆圈（3）
+            // if (circle < 0) {
+            //     circle = ol.children.length - 1;
+            // }
+            circle = circle < 0 ? ol.children.length - 1 : circle;
+
+            // 调用函数
+            circleChange();
         }
-        num--;
-        // 我终于看懂了 为什么 点击左箭头还是负值，因为你们看left值为负数往左移动的距离。而num是减少的，所以left离0分界点会越来越近，ul整体是往右移动的，但ul位于focus还是负的left
-        animate(ul, -num * focusWidth);
-
-
-        // 8. 点击右侧按钮，小圆圈跟随一起变化 可以再声明一个变量控制小圆圈的播放
-        circle--;
-        // 如果circle < 0 说明走到第一张图片，则小圆圈要改为第4个小圆圈（3）
-        // if (circle < 0) {
-        //     circle = ol.children.length - 1;
-        // }
-        circle = circle < 0 ? ol.children.length - 1 : circle;
-
-        // 调用函数
-        circleChange();
     });
 
     function circleChange() {

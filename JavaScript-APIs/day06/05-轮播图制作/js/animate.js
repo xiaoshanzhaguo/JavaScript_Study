@@ -19,10 +19,11 @@ function animate(obj, target, callback) {
             // 停止动画 本质是停止定时器
             clearInterval(obj.timer);
             // 回调函数写到定时器结束里面
-            if (callback) {
-                // 调用函数
-                callback();
-            }
+            // if (callback) {
+            //     // 调用函数
+            //     callback();
+            // }
+            callback && callback(); // 如果callback为真，就调用函数，如果为假就结束，不再操作，不会调用函数
         }
         // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
         obj.style.left = obj.offsetLeft + step + 'px';
