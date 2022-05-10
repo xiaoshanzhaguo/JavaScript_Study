@@ -33,6 +33,7 @@ div {
     position: fixed;
     top: 0;
     left: 50%;
+    /* 提高它的层级，它应该压住所有人 */
     z-index: 999;
     /* 固定的盒子应该有宽度 */
     -webkit-transform: translateX(-50%);
@@ -95,6 +96,7 @@ div {
 /* goBack */
 
 .goBack {
+    /* 一开始隐藏起来 */
     display: none;
     position: fixed;
     bottom: 50px;
@@ -151,6 +153,7 @@ div {
     background-color: #fff;
     list-style: none;
     border-radius: 2px;
+    /* 给小圈点加上过渡效果，它的宽度会慢慢变宽 */
     transition: all .3s;
 }
 
