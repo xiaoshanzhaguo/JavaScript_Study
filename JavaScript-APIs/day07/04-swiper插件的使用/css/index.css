@@ -212,6 +212,7 @@ div {
     align-items: center;
 }
 
+/* 更改默认样式 */
 .swiper-pagination-bullet {
     background: #fff!important;
 }

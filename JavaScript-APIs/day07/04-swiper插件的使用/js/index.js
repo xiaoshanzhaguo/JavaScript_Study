@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: {
-            delay: 5000,
+            delay: 5000, //更改延时时间
             disableOnInteraction: false,
         },
         pagination: {
