@@ -109,6 +109,7 @@ div {
     height: 44px;
     min-width: 320px;
     max-width: 640px;
+    /* 提高它的层级，压住其他盒子 */
     z-index: 9999;
 }
 

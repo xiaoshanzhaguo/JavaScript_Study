@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     var swiper = new Swiper('.swiper-container', {
         spaceBetween: 30,
         centeredSlides: true,
@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
             disableOnInteraction: false,
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: '.swiper-pagination', // 调用分页器的意思
             clickable: true,
         },
         navigation: {
