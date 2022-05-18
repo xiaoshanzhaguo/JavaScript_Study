@@ -33,6 +33,15 @@ $(function () {
         // console.log(n);
         n++;
         $(this).siblings(".itxt").val(n);
+
+        // 4. 计算小计模块 根据文本框的值 乘以 当前商品的价格 就是商品的小计
+        // 当前商品的价格 p
+        var p = $(this).parent().parent().siblings(".p-price").html();
+        // console.log(p);
+        p = p.substr(1);
+        // console.log(p);
+        // 小计模块
+        $(this).parent().parent().siblings(".p-sum").html("￥" + p * n);
     });
     $(".decrement").click(function () {
         // 得到当前兄弟文本框的值
@@ -43,5 +52,14 @@ $(function () {
         }
         n--;
         $(this).siblings(".itxt").val(n);
+
+        // 4. 计算小计模块 根据文本框的值 乘以 当前商品的价格 就是商品的小计
+        // 当前商品的价格 p
+        var p = $(this).parent().parent().siblings(".p-price").html();
+        // console.log(p);
+        p = p.substr(1);
+        // console.log(p);
+        // 小计模块
+        $(this).parent().parent().siblings(".p-sum").html("￥" + p * n);
     });
 })
