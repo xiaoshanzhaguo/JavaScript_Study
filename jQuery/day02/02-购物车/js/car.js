@@ -42,6 +42,7 @@ $(function () {
         // console.log(p);
         p = p.substr(1);
         // console.log(p);
+
         var price = (p * n).toFixed(2);
         // 小计模块
         // toFixed(2) 可以让我们保留2位小数
@@ -63,7 +64,18 @@ $(function () {
         // console.log(p);
         p = p.substr(1);
         // console.log(p);
+
         // 小计模块
+        $(this).parents(".p-num").siblings(".p-sum").html("￥" + (p * n).toFixed(2));
+    });
+
+    // 5. 用户修改文本框的值 计算 小计模块
+    $(".itxt").change(function () {
+        // 先得到文本框里面的值 乘以 当前商品的单价
+        var n = $(this).val();
+        // 当前商品的单价
+        var p = $(this).parents(".p-num").siblings(".p-price").html();
+        p = p.substr(1);
         $(this).parents(".p-num").siblings(".p-sum").html("￥" + (p * n).toFixed(2));
     });
 })
