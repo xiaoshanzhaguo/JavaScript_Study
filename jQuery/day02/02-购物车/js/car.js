@@ -36,12 +36,16 @@ $(function () {
 
         // 4. 计算小计模块 根据文本框的值 乘以 当前商品的价格 就是商品的小计
         // 当前商品的价格 p
-        var p = $(this).parent().parent().siblings(".p-price").html();
+        // var p = $(this).parent().parent().siblings(".p-price").html();
+        // parents(".p-num") 返回指定的祖先元素
+        var p = $(this).parents(".p-num").siblings(".p-price").html();
         // console.log(p);
         p = p.substr(1);
         // console.log(p);
+        var price = (p * n).toFixed(2);
         // 小计模块
-        $(this).parent().parent().siblings(".p-sum").html("￥" + p * n);
+        // toFixed(2) 可以让我们保留2位小数
+        $(this).parents(".p-num").siblings(".p-sum").html("￥" + price);
     });
     $(".decrement").click(function () {
         // 得到当前兄弟文本框的值
@@ -55,11 +59,11 @@ $(function () {
 
         // 4. 计算小计模块 根据文本框的值 乘以 当前商品的价格 就是商品的小计
         // 当前商品的价格 p
-        var p = $(this).parent().parent().siblings(".p-price").html();
+        var p = $(this).parents(".p-num").siblings(".p-price").html();
         // console.log(p);
         p = p.substr(1);
         // console.log(p);
         // 小计模块
-        $(this).parent().parent().siblings(".p-sum").html("￥" + p * n);
+        $(this).parents(".p-num").siblings(".p-sum").html("￥" + (p * n).toFixed(2));
     });
 })
