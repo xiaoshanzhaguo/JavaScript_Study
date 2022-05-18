@@ -47,6 +47,7 @@ $(function () {
         // 小计模块
         // toFixed(2) 可以让我们保留2位小数
         $(this).parents(".p-num").siblings(".p-sum").html("￥" + price);
+        getSum();
     });
     $(".decrement").click(function () {
         // 得到当前兄弟文本框的值
@@ -67,6 +68,7 @@ $(function () {
 
         // 小计模块
         $(this).parents(".p-num").siblings(".p-sum").html("￥" + (p * n).toFixed(2));
+        getSum();
     });
 
     // 5. 用户修改文本框的值 计算 小计模块
@@ -77,5 +79,24 @@ $(function () {
         var p = $(this).parents(".p-num").siblings(".p-price").html();
         p = p.substr(1);
         $(this).parents(".p-num").siblings(".p-sum").html("￥" + (p * n).toFixed(2));
+        getSum();
     });
+
+    // 6. 计算总计总额模块
+    getSum(); // 第一次刷新页面时，默认调用它
+
+    function getSum() {
+        var count = 0; // 计算总件数
+        var money = 0; // 计算总价钱
+        $(".itxt").each(function (i, ele) {
+            count += parseInt($(ele).val());
+        });
+        $(".amount-sum em").text(count);
+
+        $(".p-sum").each(function (i, ele) {
+            money += parseFloat($(ele).text().substr(1)); // ！！！先获取数据，再截取
+        });
+
+        $(".price-sum em").text("￥" + money.toFixed(2));
+    }
 })
