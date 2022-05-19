@@ -7,6 +7,15 @@ $(function () {
         // console.log($(this).prop("checked"));
         // 因为三个小按钮里有隐式迭代，会依次改变三个小按钮的状态
         $(".j-checkbox, .checkall").prop("checked", $(this).prop("checked"));
+
+        // 选中商品添加背景
+        if ($(this).prop("checked")) {
+            // 让所有的商品添加 check-cart-item 类名
+            $(".cart-item").addClass("check-cart-item");
+        } else {
+            // check-cart-item 移除
+            $(".cart-item").removeClass("check-cart-item");
+        }
     });
 
     // 1.2 如果小复选框被选中的个数等于3 就应该把全选按钮选上，否则全选按钮不选。
@@ -23,6 +32,15 @@ $(function () {
             $(".checkall").prop("checked", true);
         } else {
             $(".checkall").prop("checked", false);
+        }
+
+        // 选中商品添加背景
+        if ($(this).prop("checked")) {
+            // 让当前的商品添加 check-cart-item 类名
+            $(this).parents(".cart-item").addClass("check-cart-item");
+        } else {
+            // check-cart-item 移除
+            $(this).parents(".cart-item").removeClass("check-cart-item");
         }
     });
 
