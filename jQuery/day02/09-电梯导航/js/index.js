@@ -1,13 +1,22 @@
 $(function () {
     // 1. 显示隐藏电梯导航
     var toolTop = $(".recommend").offset().top;
-    $(window).scroll(function () {
+    // 刷新页面会调用
+    toggleTool();
+
+    // 封装显示隐藏电梯导航的函数
+    function toggleTool() {
         // ！！！下面的scrollTop要加()，它是个方法
         if ($(document).scrollTop() >= toolTop) {
             $(".fixedtool").fadeIn();
         } else {
             $(".fixedtool").fadeOut();
         }
+    }
+
+    $(window).scroll(function () {
+        // 滚动页面也会调用
+        toggleTool();
     });
 
     // 2. 点击电梯导航页面可以滚动到相应内容区域
@@ -21,5 +30,8 @@ $(function () {
         $("body, html").stop().animate({
             scrollTop: current
         })
+
+        // 点击之后，让当前的小li 添加current 类名，姐妹移除current类名
+        $(this).addClass("current").siblings().removeClass(); // 因为小li里面只要current一个类名，添加和删除都是针对class来说的，因此removeClass里面不用写current也没问题
     });
 });
