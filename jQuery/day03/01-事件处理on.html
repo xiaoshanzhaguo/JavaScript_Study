@@ -22,6 +22,16 @@
 
 <body>
     <div></div>
+    <ul>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+    </ul>
+    <ol>
+
+    </ol>
 
     <script>
         $(function () {
@@ -34,6 +44,7 @@
             });
 
             // 2. 事件处理on
+            // (1) on可以绑定一个或多个事件处理程序
             $("div").on({
                 mouseenter: function () {
                     $(this).css("background", "skyblue");
@@ -50,6 +61,25 @@
                 // alert(11);
                 $(this).toggleClass("current");
             });
+
+            // (2) on可以实现事件委托（委派）
+            // $("ul li").click();
+            /* 事件是绑定在ul身上的，只有ul元素添加了点击事件，但是触发对象是小li，当点击小li才会触发，
+            点击小li之后会有事件冒泡，事件冒泡会冒到父亲身上，父亲身上有个点击事件，所以就会执行里面的程序 */
+            $("ul").on("click", "li", function () {
+                alert(11);
+            });
+            // click 是绑定在ul身上的，但是触发的对象是ul 里面的小li
+
+            // (3) on可以给动态未来创建的元素绑定事件
+            // $("ol li").click(function () {
+            //     alert(11);
+            // })
+            $("ol").on("click", "li", function () {
+                alert(11);
+            })
+            var li = $("<li>我是后来创建的</li>");
+            $("ol").append(li);
         })
     </script>
 </body>
