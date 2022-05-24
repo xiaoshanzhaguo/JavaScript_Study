@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function () {
+            // $符选择器简单的封装
+            function $(ele) {
+                return document.querySelector(ele);
+            }
+            console.log($("div"));
+
+            // 1. 如果是$ 符号冲突，我们就使用jQuery
+            // $.each();
+            jQuery.each();  // 这样不会报错
+
+            // 2. 让jQuery 释放对$ 控制权，让用户自己决定
+            // var suibian = $.noConflict();  // 这里的$与上面定义的函数$冲突了
+            var suibian = jQuery.noConflict();
+            console.log(suibian("span"));
+            suibian.each();  // 这样不会报错
+        });
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+</body>
+
+</html>
