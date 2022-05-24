@@ -25,8 +25,19 @@
                 }
             });
 
+            $("ul").on("click", "li", function () {
+                alert(11);
+            })
+
             // 1. 事件解绑 off
-            $("div").off();
+            // $("div").off();  // 如果括号为空，这个是解除了div身上的所有事件
+            $("div").off("click");  // 这个是解除了div身上的点击事件
+            $("ul").off("click", "li");  // 解除事件委托
+
+            // 2. one() 但是它只能触发一次
+            $("p").one("click", function () {
+                alert(11);
+            })
         })
     </script>
 </head>
