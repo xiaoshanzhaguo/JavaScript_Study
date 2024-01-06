@@ -14,9 +14,14 @@ console.log(f.constructor === Fn);   // false
 console.log(f.constructor == Array); // true
 
 
+
+/**
+ * Object.prototype.toString.call()
+ */
+
 var a = Object.prototype.toString;
 
-console.log(a.call(2));  // [object Number]
+console.log(a.call(2));  // 
 console. log(a.call(true));
 console.log(a.call('str'));
 console.log(a.call([]));
