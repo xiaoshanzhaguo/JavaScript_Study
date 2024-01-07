@@ -44,9 +44,9 @@ let d1 = Symbol('foo');
 // 数组、对象
 // let e1 = [1,2,3], e2 = {a: 'abc', b: 18};
 // console.log("e1:" + Number(e1), "e2:" + Number(e2));  // e1:NaN e2:NaN
-let e1 = [1], e2 = {0: 1};
-console.log("e1:" + Number(e1), "e2:" + Number(e2));  // e1:1 e2:NaN
+let e1 = [1], e2 = {0: 1}, e3 = [], e4 = {};
+console.log("e1:" + Number(e1), "e2:" + Number(e2), "e3:" + Number(e3), "e4:" + Number(e4));  // e1:1 e2:NaN e3:0 e4:NaN
 /**
- * 1. 普通对象，按11条的规则，会转换成字符串"[Object Obejct]"，然后将这个字符串转换成数字：NaN。
+ * 1. 普通对象，按11条的规则，会转换成字符串"[Object Obejct]"，然后将这个字符串转换成数字：NaN。空对象，是输出的NaN
    2. 数组，如果是['123']的数组，会转成字符串'123'，再转成数字123；如果是['123b']的数组，会转成字符串'123b'，再转成数字 NaN；[]或['']会转成空字符串''，再转成数字0
  */
